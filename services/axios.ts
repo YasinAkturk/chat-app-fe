@@ -1,7 +1,10 @@
 import { getToken } from "@/lib/token.action";
 import axios from "axios";
+import { cookies } from "next/headers";
 
 const token = getToken() // `token` value'yu alıyoruz
+cookies().get('token')
+console.log("🚀 ~x token:", token)
 const httpService = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API,
   timeout: 1000,
