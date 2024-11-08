@@ -2,9 +2,9 @@
 
 import httpService from "@/services/axios";
 
-export async function getFriendsWithLastMessage() {
+export async function getMessages() {
   try {
-    const response = await httpService.get("/getFriendsWithLastMessage");
+    const response = await httpService.get("/getMessages");
     return response.data; // Başarılı yanıtı döndür
   } catch (error: any) {
     console.log("error", error);

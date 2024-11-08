@@ -1,9 +1,10 @@
-"use client"
+"use client";
 import React, { useState, useCallback } from "react";
 import { IMessageItems } from "./types";
 import UserStatus from "./_components/UserStatus";
 import MessageList from "./_components/MessageList";
 import MessageInput from "./_components/MessageInput";
+/* import { getMessages } from "@/lib/chat.actions"; */
 // Mesaj listesini sabit tutabiliriz, bu sayede her render işleminde yeniden oluşturulmaz
 const messageList: IMessageItems = [
   {
@@ -147,11 +148,20 @@ const messageList: IMessageItems = [
     outgoing: true,
   },
 ];
-export default function page() {
+export default async function page() {
   const [statu, setStatu] = useState(false);
   const [openEmoji, setOpenEmoji] = useState(false);
   const [message, setMessage] = useState("");
-
+  
+  /* useEffect(() => {
+    const response: any = await getMessages();
+  if (response?.error) {
+    console.log("response", response?.error);
+  } else {
+    console.log("Başarılı");
+  }
+  }, []) */
+  
   const toggleEmojiPicker = useCallback(() => {
     setOpenEmoji((prev) => !prev);
   }, []);

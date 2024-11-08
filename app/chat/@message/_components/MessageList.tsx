@@ -4,6 +4,7 @@ interface Props {
   messages: IMessageItems;
 }
 const MessageList = React.memo(({ messages }: Props) => {
+  console.log("🚀 ~ MessageList ~ messages:", messages)
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {

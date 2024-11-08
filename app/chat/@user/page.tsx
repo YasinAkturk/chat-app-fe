@@ -1,238 +1,16 @@
 import React from "react";
 import SearchUser from "./_components/SearchUser";
 import ListUser from "./_components/ListUser";
-import { getAllFriend } from "@/lib/user.actions";
+import { getFriendsWithLastMessage } from "@/lib/user.actions";
 const userList = [
   {
+    name: "Yasin",
+    lastname: "Aktürk",
     fullName: "Yasin Aktürk",
-    message:
+    lastMessage:
       "lorem ipsum is simply dummy text of the printing and typesetting industry.",
     avatar: "https://github.com/shadcn.png",
-    time: "10:20",
-  },
-  {
-    fullName: "Lorem Ipsum",
-    message:
-      "lorem ipsum is simply dummy text of the printing and typesetting industry.",
-    avatar: "https://github.com/shadcn.png",
-    time: "10:20",
-  },
-  {
-    fullName: "Ali Veli",
-    message:
-      "lorem ipsum is simply dummy text of the printing and typesetting industry.",
-    avatar: "https://github.com/shadcn.png",
-    time: "10:20",
-  },
-  {
-    fullName: "Yasin Aktürk",
-    message:
-      "lorem ipsum is simply dummy text of the printing and typesetting industry.",
-    avatar: "https://github.com/shadcn.png",
-    time: "10:20",
-  },
-  {
-    fullName: "Lorem Ipsum",
-    message:
-      "lorem ipsum is simply dummy text of the printing and typesetting industry.",
-    avatar: "https://github.com/shadcn.png",
-    time: "10:20",
-  },
-  {
-    fullName: "Ali Veli",
-    message:
-      "lorem ipsum is simply dummy text of the printing and typesetting industry.",
-    avatar: "https://github.com/shadcn.png",
-    time: "10:20",
-  },
-  {
-    fullName: "Yasin Aktürk",
-    message:
-      "lorem ipsum is simply dummy text of the printing and typesetting industry.",
-    avatar: "https://github.com/shadcn.png",
-    time: "10:20",
-  },
-  {
-    fullName: "Lorem Ipsum",
-    message:
-      "lorem ipsum is simply dummy text of the printing and typesetting industry.",
-    avatar: "https://github.com/shadcn.png",
-    time: "10:20",
-  },
-  {
-    fullName: "Ali Veli",
-    message:
-      "lorem ipsum is simply dummy text of the printing and typesetting industry.",
-    avatar: "https://github.com/shadcn.png",
-    time: "10:20",
-  },
-  {
-    fullName: "Yasin Aktürk",
-    message:
-      "lorem ipsum is simply dummy text of the printing and typesetting industry.",
-    avatar: "https://github.com/shadcn.png",
-    time: "10:20",
-  },
-  {
-    fullName: "Lorem Ipsum",
-    message:
-      "lorem ipsum is simply dummy text of the printing and typesetting industry.",
-    avatar: "https://github.com/shadcn.png",
-    time: "10:20",
-  },
-  {
-    fullName: "Ali Veli",
-    message:
-      "lorem ipsum is simply dummy text of the printing and typesetting industry.",
-    avatar: "https://github.com/shadcn.png",
-    time: "10:20",
-  },
-  {
-    fullName: "Yasin Aktürk",
-    message:
-      "lorem ipsum is simply dummy text of the printing and typesetting industry.",
-    avatar: "https://github.com/shadcn.png",
-    time: "10:20",
-  },
-  {
-    fullName: "Lorem Ipsum",
-    message:
-      "lorem ipsum is simply dummy text of the printing and typesetting industry.",
-    avatar: "https://github.com/shadcn.png",
-    time: "10:20",
-  },
-  {
-    fullName: "Ali Veli",
-    message:
-      "lorem ipsum is simply dummy text of the printing and typesetting industry.",
-    avatar: "https://github.com/shadcn.png",
-    time: "10:20",
-  },
-  {
-    fullName: "Yasin Aktürk",
-    message:
-      "lorem ipsum is simply dummy text of the printing and typesetting industry.",
-    avatar: "https://github.com/shadcn.png",
-    time: "10:20",
-  },
-  {
-    fullName: "Lorem Ipsum",
-    message:
-      "lorem ipsum is simply dummy text of the printing and typesetting industry.",
-    avatar: "https://github.com/shadcn.png",
-    time: "10:20",
-  },
-  {
-    fullName: "Ali Veli",
-    message:
-      "lorem ipsum is simply dummy text of the printing and typesetting industry.",
-    avatar: "https://github.com/shadcn.png",
-    time: "10:20",
-  },
-  {
-    fullName: "Yasin Aktürk",
-    message:
-      "lorem ipsum is simply dummy text of the printing and typesetting industry.",
-    avatar: "https://github.com/shadcn.png",
-    time: "10:20",
-  },
-  {
-    fullName: "Lorem Ipsum",
-    message:
-      "lorem ipsum is simply dummy text of the printing and typesetting industry.",
-    avatar: "https://github.com/shadcn.png",
-    time: "10:20",
-  },
-  {
-    fullName: "Ali Veli",
-    message:
-      "lorem ipsum is simply dummy text of the printing and typesetting industry.",
-    avatar: "https://github.com/shadcn.png",
-    time: "10:20",
-  },
-  {
-    fullName: "Yasin Aktürk",
-    message:
-      "lorem ipsum is simply dummy text of the printing and typesetting industry.",
-    avatar: "https://github.com/shadcn.png",
-    time: "10:20",
-  },
-  {
-    fullName: "Lorem Ipsum",
-    message:
-      "lorem ipsum is simply dummy text of the printing and typesetting industry.",
-    avatar: "https://github.com/shadcn.png",
-    time: "10:20",
-  },
-  {
-    fullName: "Ali Veli",
-    message:
-      "lorem ipsum is simply dummy text of the printing and typesetting industry.",
-    avatar: "https://github.com/shadcn.png",
-    time: "10:20",
-  },
-  {
-    fullName: "Yasin Aktürk",
-    message:
-      "lorem ipsum is simply dummy text of the printing and typesetting industry.",
-    avatar: "https://github.com/shadcn.png",
-    time: "10:20",
-  },
-  {
-    fullName: "Lorem Ipsum",
-    message:
-      "lorem ipsum is simply dummy text of the printing and typesetting industry.",
-    avatar: "https://github.com/shadcn.png",
-    time: "10:20",
-  },
-  {
-    fullName: "Ali Veli",
-    message:
-      "lorem ipsum is simply dummy text of the printing and typesetting industry.",
-    avatar: "https://github.com/shadcn.png",
-    time: "10:20",
-  },
-  {
-    fullName: "Yasin Aktürk",
-    message:
-      "lorem ipsum is simply dummy text of the printing and typesetting industry.",
-    avatar: "https://github.com/shadcn.png",
-    time: "10:20",
-  },
-  {
-    fullName: "Lorem Ipsum",
-    message:
-      "lorem ipsum is simply dummy text of the printing and typesetting industry.",
-    avatar: "https://github.com/shadcn.png",
-    time: "10:20",
-  },
-  {
-    fullName: "Ali Veli",
-    message:
-      "lorem ipsum is simply dummy text of the printing and typesetting industry.",
-    avatar: "https://github.com/shadcn.png",
-    time: "10:20",
-  },
-  {
-    fullName: "Yasin Aktürk",
-    message:
-      "lorem ipsum is simply dummy text of the printing and typesetting industry.",
-    avatar: "https://github.com/shadcn.png",
-    time: "10:20",
-  },
-  {
-    fullName: "Lorem Ipsum",
-    message:
-      "lorem ipsum is simply dummy text of the printing and typesetting industry.",
-    avatar: "https://github.com/shadcn.png",
-    time: "10:20",
-  },
-  {
-    fullName: "Ali Veli",
-    message:
-      "lorem ipsum is simply dummy text of the printing and typesetting industry.",
-    avatar: "https://github.com/shadcn.png",
-    time: "10:20",
+    lastMessageDate: "2024-08-07T07:22:01.473Z",
   },
 ];
 const commands = [
@@ -242,30 +20,18 @@ const commands = [
 ];
 
 export default async function page() {
-  const response:any = await getAllFriend();
+  const response:any = await getFriendsWithLastMessage();
     if (response?.error) {
       console.log("response", response?.error);
     } else {
-      console.log("response", response);
+      console.log("Başarılı");
     }
-  /* const response = await httpService.get("/getAllFriend");
-  console.log("🚀 ~ page ~ response:", response) */
-  /* const [friendList, setFriendList] = useState<any[]>([]);
-
-  useEffect(() => {
-    const fetchFriendList = async () => {
-      const list = await getAllFriendList();
-      setFriendList(list);
-    };
-
-    fetchFriendList();
-  }, []); */
 
 
   return (
     <>
       <SearchUser />
-      <ListUser users={userList} />
+      <ListUser users={response} />
     </>
   );
 }

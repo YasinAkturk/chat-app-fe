@@ -42,7 +42,7 @@ export const page = () => {
       console.log("response", response?.error);
     } else {
       console.log("response", response);
-      router.push("/")
+      router.push("/chat")
       // Başarılı yanıtı işleyin
     }
     setLoading(false);

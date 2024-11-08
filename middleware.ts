@@ -14,9 +14,11 @@ export function middleware(req: NextRequest) {
     return NextResponse.redirect(`${req.nextUrl.origin}/chat/`);
   } else if (!token && pathname === '/login') {
     return NextResponse.next();
-  } else if (token  && pathname === '/login') {
+  } else if (token && pathname === '/login') {
     return NextResponse.redirect(`${req.nextUrl.origin}/chat/`);
-  } else if(!token && pathname === '/') {
+  } else if(!token && pathname === '/chat') {
     return NextResponse.redirect(`${req.nextUrl.origin}/login/`);
+  } else if(token && pathname === '/chat') {
+    return NextResponse.next();
   }
 }
