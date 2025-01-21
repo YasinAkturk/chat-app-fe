@@ -1,37 +1,34 @@
-import React from "react";
+"use client"
+import React, { useEffect } from "react";
 import SearchUser from "./_components/SearchUser";
 import ListUser from "./_components/ListUser";
-import { getFriendsWithLastMessage } from "@/lib/user.actions";
-const userList = [
-  {
-    name: "Yasin",
-    lastname: "Aktürk",
-    fullName: "Yasin Aktürk",
-    lastMessage:
-      "lorem ipsum is simply dummy text of the printing and typesetting industry.",
-    avatar: "https://github.com/shadcn.png",
-    lastMessageDate: "2024-08-07T07:22:01.473Z",
-  },
-];
-const commands = [
-  { value: "calendar", label: "Calendar" },
-  { value: "search-emoji", label: "Search Emoji" },
-  { value: "calculator", label: "Calculator" },
-];
+import { friendsWithLastMessage } from '@/store/friendsSlice';
+import { useAppDispatch, useAppSelector } from "@/lib/hookStore";
+import { Skeleton } from "@/components/ui/skeleton";
 
-export default async function page() {
-  const response:any = await getFriendsWithLastMessage();
-    if (response?.error) {
-      console.log("response", response?.error);
-    } else {
-      console.log("Başarılı");
+export default function Page() {
+  const dispatch = useAppDispatch();
+  const friends = useAppSelector((state) => state.friends.friendsList);
+  const status = useAppSelector((state) => state.friends.status);
+
+  useEffect(() => {
+    if (status === 'idle') {
+      dispatch(friendsWithLastMessage());
     }
-
+  }, [status, dispatch]);
 
   return (
     <>
       <SearchUser />
-      <ListUser users={response} />
+      {status != 'succeeded' ? (
+        <div className="flex flex-col space-y-4">
+          <Skeleton className="h-12 w-full" />
+          <Skeleton className="h-12 w-full" />
+          <Skeleton className="h-12 w-full" />
+        </div>
+      ) : (
+        <ListUser users={friends} />
+      )}
     </>
   );
 }

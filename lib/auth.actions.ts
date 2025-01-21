@@ -10,7 +10,9 @@ interface FormData {
 export async function authenticate(formData: FormData) {
   try {
     const response:any = await httpService.post("/login", formData);
-    cookies().set('token', response.token)
+    console.log("🚀 ~ authenticate ~ response:", response)
+    cookies().set('token', response.accessToken)
+    cookies().set('userId', response.data._id)
     return response.data; // Başarılı yanıtı döndür
   } catch (error: any) {
     console.log("error", error);

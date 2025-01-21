@@ -10,6 +10,7 @@ interface Props {
     openEmoji: boolean
     toggleEmojiPicker: () => void
     addEmoji: any
+    sendMessage: () => void;
 }
 
 const MessageInput = ({
@@ -18,6 +19,7 @@ const MessageInput = ({
     openEmoji,
     toggleEmojiPicker,
     addEmoji,
+    sendMessage
   }: Props) => (
     <div className="flex-none flex items-center gap-2 h-16 p-2">
       <LinkNone2Icon className="size-7 cursor-pointer" />
@@ -25,10 +27,16 @@ const MessageInput = ({
         type="text"
         value={message}
         onChange={(e) => setMessage(e.target.value)}
+        onKeyUp={(event:any) => {
+          console.log("🚀 ~ event:", event)
+          if (event.key === 'Enter') {
+            sendMessage()
+          }
+        }}
         placeholder="Mesaj"
         className="mr-2 focus-visible:ring-0 focus-visible:ring-ring focus-visible:ring-offset-0"
       />
-      <PaperPlaneIcon className="size-5 -rotate-45 cursor-pointer" />
+      <PaperPlaneIcon className="size-5 -rotate-45 cursor-pointer" onClick={sendMessage}  />
       <FaceIcon
         className="size-6 mx-2 pt-1 cursor-pointer"
         onClick={toggleEmojiPicker}

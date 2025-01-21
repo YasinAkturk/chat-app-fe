@@ -1,12 +1,11 @@
 "use client";
 import React, { useState } from "react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { FixedSizeList as List } from "react-window";
-import AutoSizer from "react-virtualized-auto-sizer";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Virtuoso } from "react-virtuoso";
-
+import { useChatContext } from "../../context/ChatContext";
 interface User {
+  id: string
   fullName?: string;
   lastMessage: string;
   avatar?: string;
@@ -14,16 +13,13 @@ interface User {
   name: string;
   lastname: string;
 }
-{
-  /* <div className="flex items-center space-x-4">
-  <Skeleton className="h-12 w-12 rounded-full" />
-  <div className="space-y-2">
-    <Skeleton className="h-4 w-[250px]" />
-    <Skeleton className="h-4 w-[200px]" />
-  </div>
-</div>; */
-}
+
 export default function ListUser({ users }: { users: User[] }) {
+  const { setSelectedUserId } = useChatContext();
+
+  const handleUserClick = (user:any) => {
+    setSelectedUserId(user);
+  };
   const [isScrolling, setIsScrolling] = useState(false);
   console.log("🚀 ~ ListUser ~ users:", users);
   return (
@@ -51,6 +47,7 @@ export default function ListUser({ users }: { users: User[] }) {
             </div>
           ) : (
             <div
+              onClick={() => handleUserClick(user)}
               key={index}
               className="flex justify-start w-full gap-4 border-b border-slate-200 hover:border-slate-400 p-2 cursor-pointer h-[65px]"
             >

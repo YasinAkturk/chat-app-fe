@@ -1,9 +1,11 @@
+"use client"
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
 import Sidebar from "./_components/Sidebar";
+import { ChatProvider } from "./context/ChatContext";
 export default function Layout({
   user,
   message
@@ -13,11 +15,13 @@ export default function Layout({
 }) {
   return (
     <main className="flex">
-      <div className="w-[60px]">
-      <Sidebar />
-      </div>
-      <div className="w-[450px]"><div className="h-screen p-4">{user}</div></div>
-      <div className="w-full"><div className="h-screen">{message}</div></div>
+      <ChatProvider>
+        <div className="w-[60px]">
+        <Sidebar />
+        </div>
+        <div className="w-[450px]"><div className="h-screen p-4">{user}</div></div>
+        <div className="w-full"><div className="h-screen">{message}</div></div>
+      </ChatProvider>
       {/* <ResizablePanelGroup
         className="w-full h-screen items-stretch"
         direction="horizontal"

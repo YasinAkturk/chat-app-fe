@@ -6,9 +6,7 @@ export const config = {
 
 export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
-  console.log("path", pathname);
   const token = req.cookies.get('token')?.value;
-  console.log("token", token);
 
   if (token && pathname === '/') {
     return NextResponse.redirect(`${req.nextUrl.origin}/chat/`);

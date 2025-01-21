@@ -1,7 +1,11 @@
 export interface IMessageItem {
-    message: string;
-    incoming: boolean;
-    outgoing: boolean;
-  }
-  
-  export type IMessageItems = IMessageItem[];
+  _id?: string;
+  sender: string;
+  receiver: string;
+  content: string;
+  seen: boolean;
+  createdAt: string;
+  updatedAt?: string;
+}
+
+export type IMessageItems = IMessageItem[];

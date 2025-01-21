@@ -2,6 +2,7 @@ import axios from "axios";
 import { cookies } from "next/headers";
 
 const token = cookies().get('token')
+console.log("🚀 ~ token: LAAAAAAAAAAAAAAAAAN", token)
 const httpService = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API,
   timeout: 1000,
@@ -10,6 +11,7 @@ const httpService = axios.create({
 
 httpService.defaults.headers.common["Authorization"] =  token ? `Bearer ${token.value}` : undefined
 
+console.log("🚀 ~ Authorization LAAAAAAAAAAAAAAAAAN", httpService.defaults.headers.common["Authorization"])
 httpService.interceptors.response.use(
   (response) => Promise.resolve(response.data),
   (error) => {
